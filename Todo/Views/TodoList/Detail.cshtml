@@ -1,5 +1,6 @@
 ﻿@using Todo.Controllers
 @using Todo.Data.Entities
+@using Todo.Models.TodoItems
 @using Todo.Services
 @model Todo.Models.TodoLists.TodoListDetailViewmodel
 
@@ -17,6 +18,10 @@
             <a asp-action="Create" asp-controller="TodoItem" asp-route-todoListId="@Model.TodoListId">
                 <strong>Add New Item</strong>
             </a>
+            <div class="toggleDoneItem">
+                <label for="toggleVisibleDoneItems">Hide items that are done</label>
+                <input type="checkbox" id="toggleVisibleDoneItems"/>
+            </div>
         </li>
 
         @foreach (var item in Model.Items.OrderBy(item => item.Importance))
@@ -35,35 +40,56 @@
                     break;
             }
 
-            <li class="list-group-item @contextualClass">
+            <li class="list-group-item @contextualClass @IsToDoItemDone(item)">
                 
                 <div class="row">
 
-                <div class="col-md-8">
-                    <a asp-action="Edit" asp-controller="TodoItem" asp-route-todoItemId="@item.TodoItemId">
+                    <div class="col-md-8">
+                        <a asp-action="Edit" asp-controller="TodoItem" asp-route-todoItemId="@item.TodoItemId">
+                            
+                           
 
-                        @if (item.IsDone)
-                        {
-                            <s>@item.Title</s>
-                        }
-                        else
-                        {
-                            <text>@item.Title</text>
-                        }
-                    </a>
-                </div>
+                            @if (item.IsDone)
+                            {
+                                <s>@item.Title</s>
+                            }
+                            else
+                            {
+                                <text>@item.Title</text>
+                            }
+                        </a>
+                    </div>
 
-                <div class="col-md-4 text-right">
-                    <small>
-                        @item.ResponsibleParty.UserName
+                    <div class="col-md-4 text-right">
+                        <small>
+                            @item.ResponsibleParty.UserName
 
-                        <img src="https://www.gravatar.com/avatar/@Gravatar.GetHash(item.ResponsibleParty.Email)?s=30"/>
+                            <img src="https://www.gravatar.com/avatar/@Gravatar.GetHash(item.ResponsibleParty.Email)?s=30"/>
 
-                    </small>
-                </div>
+                        </small>
+                    </div>
                 </div>
 
             </li>
         }
     </ul>
 </div>
+
+@functions
+{
+    public static string IsToDoItemDone(TodoItemSummaryViewmodel todoItem)
+    {
+        return todoItem.IsDone ? "done" : null;
+    }
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#toggleVisibleDoneItems').click(function (evt) {
+                $('.done').toggle();
+            });
+        });
+    </script>
+}
