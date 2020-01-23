@@ -48,5 +48,12 @@ namespace Todo.Tests
         {
             Assert.Equal(srcTodoItem.Importance, resultFields.Importance);
         }
+
+        [Fact]
+        public void RankIsNullWhenNoValueSet()
+        {
+            Assert.Null(srcTodoItem.Rank);
+            Assert.Null(resultFields.Rank);
+        }
     }
 }

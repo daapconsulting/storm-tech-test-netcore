@@ -38,4 +38,48 @@ namespace Todo.Tests
             return todoList;
         }
     }
+
+    /*
+     *         public int TodoListId { get; set; }
+        public string Title { get; set; }
+        public IdentityUser Owner { get; set; }
+
+        public ICollection<TodoItem> Items { get; set; } = new List<TodoItem>();
+
+        protected TodoList() { }
+
+        public TodoList(IdentityUser owner, string title)
+        {
+            Owner = owner;
+            Title = title;
+        }
+
+            public int TodoItemId { get; set; }
+        public string Title { get; set; }
+        public string ResponsiblePartyId { get; set; }
+        public IdentityUser ResponsibleParty { get; set; }
+        public bool IsDone { get; set; }
+        public Importance Importance { get; set; }
+
+        public int TodoListId { get; set; }
+        public TodoList TodoList { get; set; }
+
+        public int? Rank { get; set; }
+
+        protected TodoItem() { }
+
+        public TodoItem(int todoListId, string responsiblePartyId, string title, Importance importance)
+        {
+            TodoListId = todoListId;
+            ResponsiblePartyId = responsiblePartyId;
+            Title = title;
+            Importance = importance;
+        }
+
+        public TodoItem(int todoListId, string responsiblePartyId, string title, Importance importance, int? rank) : this(todoListId, responsiblePartyId, title, importance)
+        {
+            Rank = rank;
+        }
+    }
+     */
 }
