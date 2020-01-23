@@ -18,8 +18,6 @@ The webapp runs on Windows, macOS, and Linux. It can be built using Visual Studi
 | run unit tests | `dotnet test Todo.Tests` |
 | run | `dotnet run --project Todo` |
 
-If you run the tests, you should see that one fails. This is deliberate.
-
 ## The Webapp
 
 The app allows a user to create multiple todo-lists. Each list has a number of items. Each item has an importance and a person responsable for completion.
