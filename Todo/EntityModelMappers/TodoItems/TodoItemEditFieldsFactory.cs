@@ -9,7 +9,7 @@ namespace Todo.EntityModelMappers.TodoItems
         {
             var todoList = todoItem.TodoList;
             return new TodoItemEditFields(todoList.TodoListId, todoList.Title, todoItem.TodoItemId, todoItem.Title,
-                todoItem.IsDone, todoItem.ResponsiblePartyId, todoItem.Importance, todoItem.Rank);
+                todoItem.IsDone, todoItem.ResponsiblePartyId, todoItem.Importance);
         }
 
         public static void Update(TodoItemEditFields src, TodoItem dest)

@@ -11,11 +11,10 @@ namespace Todo.Models.TodoItems
         public bool IsDone { get; set; }
         public string ResponsiblePartyId { get; set; }
         public Importance Importance { get; set; }
-        public int? Rank { get; set; }
 
         public TodoItemEditFields() { }
 
-        public TodoItemEditFields(int todoListId, string todoListTitle, int todoItemId, string title, bool isDone, string responsiblePartyId, Importance importance, int? rank)
+        public TodoItemEditFields(int todoListId, string todoListTitle, int todoItemId, string title, bool isDone, string responsiblePartyId, Importance importance)
         {
             TodoListId = todoListId;
             TodoListTitle = todoListTitle;
@@ -24,7 +23,6 @@ namespace Todo.Models.TodoItems
             IsDone = isDone;
             ResponsiblePartyId = responsiblePartyId;
             Importance = importance;
-            Rank = rank;
         }
     }
 }
